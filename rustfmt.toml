@@ -1,0 +1,4 @@
+hard_tabs = true
+report_fixme = "Unnumbered"
+report_todo = "Unnumbered"
+tab_spaces = 2

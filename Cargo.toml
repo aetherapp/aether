@@ -1,0 +1,6 @@
+[workspace]
+members = ["shared", "health"]
+default-members = ["health"]
+
+[profile.release]
+lto = true
