@@ -22,7 +22,7 @@ jobs:
       rust: nightly
     - name: "Rust fmt"
       stage: "Style"
-      rust: nightly
+      rust: stable
       script:
-        - rustup component add rustfmt-preview --toolchain nightly
-        - cargo +nightly fmt --all -- --check
+        - rustup component add rustfmt
+        - cargo fmt --all -- --check
