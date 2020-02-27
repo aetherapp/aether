@@ -1,15 +1,12 @@
 language: rust
+sudo: false
 cache: cargo
-rust:
-  - stable
-  - beta
-  - nightly
 
 jobs:
+  fast_finish: true
   allow_failures:
     - rust: nightly
-  fast_finish: true
-
-script:
-  - rustup component add rustfmt-preview --toolchain nightly
-  - cargo +nightly fmt --all -- --check
+  include:
+    - rust: stable
+    - rust: beta
+    - rust: nightly
