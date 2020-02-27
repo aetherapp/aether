@@ -2,11 +2,27 @@ language: rust
 sudo: false
 cache: cargo
 
+stages:
+  - "Test"
+  - "Style"
+
 jobs:
   fast_finish: true
   allow_failures:
     - rust: nightly
   include:
-    - rust: stable
-    - rust: beta
-    - rust: nightly
+    - name: "Stable tests"
+      stage: "Test"
+      rust: stable
+    - name: "Beta tests"
+      stage: "Test"
+      rust: beta
+    - name: "Nightly tests"
+      stage: "Test"
+      rust: nightly
+    - name: "Rust fmt"
+      stage: "Style"
+      rust: nightly
+      script:
+        - rustup component add rustfmt-preview --toolchain nightly
+        - cargo +nightly fmt --all -- --check
