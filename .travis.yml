@@ -1,5 +1,5 @@
 language: rust
-sudo: false
+os: linux
 cache: cargo
 
 stages:
@@ -11,12 +11,13 @@ jobs:
   allow_failures:
     - rust: nightly
   include:
-    - name: "Stable tests"
-      stage: "Test"
-      rust: stable
-    - name: "Beta tests"
-      stage: "Test"
-      rust: beta
+    # Disable stable & beta test till Rocket works there.
+    # - name: "Stable tests"
+    #   stage: "Test"
+    #   rust: stable
+    # - name: "Beta tests"
+    #   stage: "Test"
+    #   rust: beta
     - name: "Nightly tests"
       stage: "Test"
       rust: nightly
