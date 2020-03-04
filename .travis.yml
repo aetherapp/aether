@@ -3,8 +3,13 @@ os: linux
 cache: cargo
 
 stages:
-  - "Test"
-  - "Style"
+  - name: "Test"
+  - name: "Style"
+  - name: "Deploy"
+    # if: branch = master
+
+services:
+  - docker
 
 jobs:
   fast_finish: true
@@ -27,3 +32,8 @@ jobs:
       script:
         - rustup component add rustfmt
         - cargo fmt --all -- --check
+    - name: "Docker"
+      stage: "Deploy"
+      # Change to stable once Rocket works
+      rust: nightly
+      script: ./docker-publish.sh
