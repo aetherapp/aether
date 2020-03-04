@@ -6,7 +6,7 @@ stages:
   - name: "Test"
   - name: "Style"
   - name: "Deploy"
-    # if: branch = master
+    if: branch = master
 
 services:
   - docker
