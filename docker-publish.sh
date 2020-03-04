@@ -9,6 +9,9 @@ fi
 
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
+# Build base image
+docker build -t aether-base .
+
 # Build docker containers
 for i in $(ls -d */); do
 	CONTAINER=${i%%/}
