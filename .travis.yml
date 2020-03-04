@@ -39,7 +39,7 @@ jobs:
     - name: "Coverage"
       stage: "Test"
       rust: nightly
-      start:
+      script:
         - cargo install cargo-kcov
         - cargo test
         - cargo kcov --coveralls
