@@ -19,7 +19,10 @@ addons:
       - libdw-dev
       - binutils-dev
       - libiberty-dev
-      - gcc-multilib
+      - cmake
+      - g++
+      - pkg-config
+      - jq
 
 jobs:
   fast_finish: true
@@ -41,8 +44,8 @@ jobs:
       rust: nightly
       script:
         - cargo install cargo-kcov
-        - cargo test
-        - cargo kcov --coveralls
+        - cargo kcov --print-install-kcov-sh | sh
+        - cargo kcov --coveralls --all
     - name: "Rust fmt"
       stage: "Style"
       rust: stable
