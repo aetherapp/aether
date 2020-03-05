@@ -1,0 +1,63 @@
+language: rust
+os: linux
+cache: cargo
+
+stages:
+  - name: "Style"
+  - name: "Test"
+  - name: "Deploy"
+    if: branch = master AND type = push
+
+services:
+  - docker
+
+addons:
+  apt:
+    packages:
+      - libcurl4-openssl-dev
+      - libelf-dev
+      - libdw-dev
+      - binutils-dev
+      - libiberty-dev
+      - cmake
+      - g++
+      - pkg-config
+      - jq
+
+jobs:
+  fast_finish: true
+  include:
+    # Disable stable & beta test till Rocket works there.
+    # - name: "Stable tests"
+    #   stage: "Test"
+    #   rust: stable
+    # - name: "Beta tests"
+    #   stage: "Test"
+    #   rust: beta
+    - name: "Nightly tests"
+      stage: "Test"
+      rust: nightly
+    - name: "Coverage"
+      stage: "Test"
+      rust: nightly
+      script:
+        - cargo install cargo-kcov
+        - cargo kcov --print-install-kcov-sh | sh
+        - cargo kcov --coveralls --all
+    - name: "Rust fmt"
+      stage: "Style"
+      rust: stable
+      script:
+        - rustup component add rustfmt
+        - cargo fmt --all -- --check
+    - name: "EditorConfig"
+      stage: "Style"
+      language: python
+      script:
+        - python -m pip install editorconfig-checker
+        - editorconfig-checker -exclude LICENSE
+    - name: "Docker"
+      stage: "Deploy"
+      # Change to stable once Rocket works
+      rust: nightly
+      script: ./docker-publish.sh

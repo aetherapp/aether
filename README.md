@@ -1,5 +1,8 @@
 # Aether
 
+[![Build Status](https://travis-ci.org/aetherapp/aether.svg?branch=master)](https://travis-ci.org/aetherapp/aether)
+[![Coverage Status](https://coveralls.io/repos/github/aetherapp/aether/badge.svg?branch=master)](https://coveralls.io/github/aetherapp/aether?branch=master)
+
 _Breathing the air of gods._
 
 Aether is a private cloud solution.
