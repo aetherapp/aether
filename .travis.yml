@@ -3,8 +3,8 @@ os: linux
 cache: cargo
 
 stages:
-  - name: "Test"
   - name: "Style"
+  - name: "Test"
   - name: "Deploy"
     if: branch = master AND type = push
 
@@ -50,6 +50,12 @@ jobs:
       script:
         - rustup component add rustfmt
         - cargo fmt --all -- --check
+		- name: "EditorConfig"
+			stage: "Style"
+			language: python
+      script:
+        - python -m pip install editorconfig-checker
+        - editorconfig-checker
     - name: "Docker"
       stage: "Deploy"
       # Change to stable once Rocket works
