@@ -53,9 +53,9 @@ jobs:
 		- name: "EditorConfig"
 			stage: "Style"
 			language: python
-      script:
-        - python -m pip install editorconfig-checker
-        - editorconfig-checker
+			script:
+				- python -m pip install editorconfig-checker
+				- editorconfig-checker
     - name: "Docker"
       stage: "Deploy"
       # Change to stable once Rocket works
