@@ -55,7 +55,7 @@ jobs:
       language: python
       script:
         - python -m pip install editorconfig-checker
-        - editorconfig-checker
+        - editorconfig-checker -exclude LICENSE
     - name: "Docker"
       stage: "Deploy"
       # Change to stable once Rocket works
