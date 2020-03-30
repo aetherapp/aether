@@ -12,3 +12,6 @@ Cargo.lock
 # Ignore IDE specific files
 .idea
 .vscode
+
+# Ignore telepresence files
+telepresence.log
