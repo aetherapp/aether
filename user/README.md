@@ -1,16 +1,13 @@
-# Health
+# User
 
-This package is an simple service to indicate the aliveness of the servers
-It has a single `/health` endpoint.
-
-This service can be used to build other services from.
+This is the user service, which holds information about user accounts.
 
 ## Endpoints
 
 ### `/health`
 
-This is the health endpoint,
-which is required to be present for Kubernetes liveliness. If this endpoint fails to respond the pod will be killed and re-created.
+This is the health endpoint, which is required to be present for Kubernetes liveliness.
+If this endpoint fails to respond the pod will be killed and re-created.
 
 |               |           |
 | ------------- | --------- |

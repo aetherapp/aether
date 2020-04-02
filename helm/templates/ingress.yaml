@@ -15,4 +15,8 @@ spec:
         backend:
           serviceName: {{ .Release.Name }}-health
           servicePort: 80
+      - path: /user
+        backend:
+          serviceName: {{ .Release.Name }}-user
+          servicePort: 80
 {{- end }}
