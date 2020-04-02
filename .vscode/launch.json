@@ -1,0 +1,23 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Debug User",
+			"type": "lldb",
+			"request": "launch",
+			"preLaunchTask": "compile: user",
+			"program": "${workspaceRoot}/target/debug/user",
+			"args": [],
+			"cwd": "${workspaceRoot}"
+		},
+		{
+			"name": "Debug Health",
+			"type": "lldb",
+			"request": "launch",
+			"preLaunchTask": "compile: health",
+			"program": "${workspaceRoot}/target/debug/health",
+			"args": [],
+			"cwd": "${workspaceRoot}"
+		}
+	]
+}
