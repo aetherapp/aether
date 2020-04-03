@@ -10,7 +10,9 @@ fn response_time(c: &mut Criterion) {
 	let rocket = health::create_server();
 	let client = Client::new(rocket).expect("valid rocket instance");
 
-	c.bench_function("/api/health", |b| b.iter(|| client.get("/api/health").dispatch()));
+	c.bench_function("/api/health", |b| {
+		b.iter(|| client.get("/api/health").dispatch())
+	});
 }
 
 criterion_group!(benches, response_time);
