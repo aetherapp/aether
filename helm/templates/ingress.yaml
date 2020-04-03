@@ -11,11 +11,11 @@ spec:
   rules:
   - http:
       paths:
-      - path: /health
+      - path: /api/health
         backend:
           serviceName: {{ .Release.Name }}-health
           servicePort: 80
-      - path: /user
+      - path: /api/user
         backend:
           serviceName: {{ .Release.Name }}-user
           servicePort: 80

@@ -13,5 +13,5 @@ mod routes;
  * This is split from main to improve testability.
  */
 pub fn create_server() -> rocket::Rocket {
-	rocket::ignite().mount("/health", routes![routes::health::health])
+	rocket::ignite().mount("/api/health", routes![routes::health::health])
 }

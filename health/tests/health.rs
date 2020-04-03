@@ -13,7 +13,7 @@ fn get_health() {
 	let rocket = health::create_server();
 	let client = Client::new(rocket).expect("valid rocket instance");
 
-	let req = client.get("/health");
+	let req = client.get("/api/health");
 	let res = req.dispatch();
 
 	assert_eq!(res.status(), Status::Ok);

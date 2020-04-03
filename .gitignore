@@ -12,6 +12,12 @@ Cargo.lock
 # Ignore telepresence files
 telepresence.log
 
+# Ignore frontend output
+package-lock.json
+node_modules
+dist
+.cache
+
 # Ignore IDE specific files
 .vscode/*
 .idea/*
