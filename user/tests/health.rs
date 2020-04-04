@@ -1,4 +1,4 @@
-extern crate health;
+extern crate user;
 
 use rocket::{
 	http::{ContentType, Status},
@@ -10,10 +10,10 @@ use rocket::{
  */
 #[test]
 fn get_health() {
-	let rocket = health::create_server();
+	let rocket = user::create_server();
 	let client = Client::new(rocket).expect("valid rocket instance");
 
-	let req = client.get("/api/health");
+	let req = client.get("/api/user/health");
 	let res = req.dispatch();
 
 	assert_eq!(res.status(), Status::Ok);

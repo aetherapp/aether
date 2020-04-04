@@ -1,4 +1,4 @@
-extern crate health;
+extern crate user;
 
 use criterion::{criterion_group, criterion_main, Criterion};
 use rocket::local::Client;
@@ -7,11 +7,11 @@ use rocket::local::Client;
  * Health response time runner.
  */
 fn response_time(c: &mut Criterion) {
-	let rocket = health::create_server();
+	let rocket = user::create_server();
 	let client = Client::new(rocket).expect("valid rocket instance");
 
-	c.bench_function("/api/health", |b| {
-		b.iter(|| client.get("/api/health").dispatch())
+	c.bench_function("/api/user/health", |b| {
+		b.iter(|| client.get("/api/user/health").dispatch())
 	});
 }
 

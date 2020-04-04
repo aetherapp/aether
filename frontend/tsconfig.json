@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"noImplicitAny": true,
+		"sourceMap": true,
+		"module": "esnext",
+		"target": "es6",
+		"moduleResolution": "node",
+		"jsx": "react",
+		"jsxFactory": "h",
+		"allowJs": false,
+		"baseUrl": "./src",
+		"paths": {
+			"~*": ["./*"]
+		}
+	},
+	"include": ["./src/**/*"]
+}

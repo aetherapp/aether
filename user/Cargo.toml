@@ -1,0 +1,18 @@
+[package]
+name = "user"
+version = "0.1.0"
+authors = ["Dany Sluijk <dany@atlasdev.nl>"]
+edition = "2018"
+
+[[bench]]
+name = "health"
+harness = false
+
+[dependencies]
+rocket = { version = "0.4.2", default-features = false }
+rocket_contrib = "0.4.2"
+serde = "1.0.104"
+serde_derive = "1.0.104"
+
+[dev-dependencies]
+criterion = "0.3"

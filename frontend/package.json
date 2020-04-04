@@ -1,0 +1,30 @@
+{
+	"name": "frontend",
+	"version": "0.1.0",
+	"private": true,
+	"description": "Frontent for the Aether application",
+	"author": "Aether Team",
+	"license": "GPL-3.0",
+	"sideEffects": false,
+	"scripts": {
+		"start": "npm run watch",
+		"watch": "parcel ./src/index.html",
+		"build": "parcel build ./src/index.html",
+		"swap-watch": "telepresence --swap-deployment aether-frontend --expose 1234:80 parcel ./src/index.html"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/aetherapp/aether.git"
+	},
+	"bugs": {
+		"url": "https://github.com/aetherapp/aether/issues"
+	},
+	"devDependencies": {
+		"@types/node": "^13.11.0",
+		"parcel-bundler": "^1.12.4",
+		"typescript": "^3.8.3"
+	},
+	"dependencies": {
+		"preact": "^10.3.4"
+	}
+}

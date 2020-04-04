@@ -18,8 +18,16 @@ spec:
   rules:
   - http:
       paths:
-      - path: /health
+      - path: /
+        backend:
+          serviceName: {{ .Release.Name }}-frontend
+          servicePort: 80
+      - path: /api/health
         backend:
           serviceName: {{ .Release.Name }}-health-service
+          servicePort: 80
+      - path: /api/user
+        backend:
+          serviceName: {{ .Release.Name }}-user
           servicePort: 80
 {{- end }}

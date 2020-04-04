@@ -4,7 +4,7 @@ use rocket_contrib::json::Json;
  * Health endpoint.
  * Called by rocket when a request matches.
  */
-#[get("/")]
+#[get("/health")]
 pub fn health() -> Json<HealthResponse> {
 	Json(HealthResponse { state: "ok" })
 }
