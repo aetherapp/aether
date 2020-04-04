@@ -1,18 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-health
+  name: {{ .Release.Name }}-health-app
   labels:
-    app: {{ .Release.Name }}-health
+    title: {{ .Release.Name }}-health-app
+    app.kubernetes.io/name: aether
+    app.kubernetes.io/release: {{ .Values.release }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+    app.kubernetes.io/component: health
+    app.kubernetes.io/managed-by: helm
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: {{ .Release.Name }}-health
+      title: {{ .Release.Name }}-health-pod
+      app.kubernetes.io/name: aether
   template:
     metadata:
+      name: {{ .Release.Name }}-health-pod
       labels:
-        app: {{ .Release.Name }}-health
+        title: {{ .Release.Name }}-health-pod
+        app.kubernetes.io/name: aether
+        app.kubernetes.io/release: {{ .Values.release }}
+        app.kubernetes.io/version: {{ .Chart.AppVersion }}
+        app.kubernetes.io/component: health
+        app.kubernetes.io/managed-by: helm
     spec:
       containers:
         - name: {{ .Release.Name }}-health
@@ -44,10 +56,18 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Release.Name }}-health
+  name: {{ .Release.Name }}-health-service
+  labels:
+    title: {{ .Release.Name }}-health-service
+    app.kubernetes.io/name: aether
+    app.kubernetes.io/release: {{ .Values.release }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+    app.kubernetes.io/component: health
+    app.kubernetes.io/managed-by: helm
 spec:
   selector:
-    app: {{ .Release.Name }}-health
+    app.kubernetes.io/name: aether
+    title: {{ .Release.Name }}-health-pod
   ports:
     - protocol: TCP
       port: 80
