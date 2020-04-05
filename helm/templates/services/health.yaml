@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-health-app
+  name: {{ .Release.Name }}-health
   labels:
-    title: {{ .Release.Name }}-health-app
+    title: {{ .Release.Name }}-health
     app.kubernetes.io/name: aether
     app.kubernetes.io/release: {{ .Values.release }}
     app.kubernetes.io/version: {{ .Chart.AppVersion }}
@@ -13,13 +13,13 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      title: {{ .Release.Name }}-health-pod
+      title: {{ .Release.Name }}-health
       app.kubernetes.io/name: aether
   template:
     metadata:
-      name: {{ .Release.Name }}-health-pod
+      name: {{ .Release.Name }}-health
       labels:
-        title: {{ .Release.Name }}-health-pod
+        title: {{ .Release.Name }}-health
         app.kubernetes.io/name: aether
         app.kubernetes.io/release: {{ .Values.release }}
         app.kubernetes.io/version: {{ .Chart.AppVersion }}
@@ -40,13 +40,13 @@ spec:
               cpu: "500m"
           livenessProbe:
             httpGet:
-              path: /health
+              path: /api/health
               port: 80
             initialDelaySeconds: 5
             periodSeconds: 5
           readinessProbe:
             httpGet:
-              path: /health
+              path: /api/health
               port: 80
             initialDelaySeconds: 5
             periodSeconds: 5
@@ -56,9 +56,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Release.Name }}-health-service
+  name: {{ .Release.Name }}-health
   labels:
-    title: {{ .Release.Name }}-health-service
+    title: {{ .Release.Name }}-health
     app.kubernetes.io/name: aether
     app.kubernetes.io/release: {{ .Values.release }}
     app.kubernetes.io/version: {{ .Chart.AppVersion }}
@@ -67,7 +67,7 @@ metadata:
 spec:
   selector:
     app.kubernetes.io/name: aether
-    title: {{ .Release.Name }}-health-pod
+    title: {{ .Release.Name }}-health
   ports:
     - protocol: TCP
       port: 80
