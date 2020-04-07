@@ -50,7 +50,7 @@ jobs:
       stage: "Style"
       language: node_js
       script:
-        - cd frontent
+        - cd frontend
         - npm install
         - npm run lint-ci
     - name: "Nightly tests"
