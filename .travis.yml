@@ -49,10 +49,12 @@ jobs:
     - name: "ESLint"
       stage: "Style"
       language: node_js
+      node_js:
+        - 12
       script:
         - cd frontend
         - npm install
-        - npm run lint-ci
+        - npm run lint
     - name: "Nightly tests"
       stage: "Test"
       rust: nightly
