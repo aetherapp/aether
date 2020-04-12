@@ -5,7 +5,9 @@
 	"description": "Frontent for the Aether application",
 	"author": "Aether Team",
 	"license": "GPL-3.0",
-	"sideEffects": false,
+	"sideEffects": [
+		"./src/index.tsx"
+	],
 	"scripts": {
 		"start": "npm run watch",
 		"watch": "parcel ./src/index.html --hmr-hostname localhost",
