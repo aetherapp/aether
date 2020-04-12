@@ -34,16 +34,6 @@ jobs:
     # - name: "Beta tests"
     #   stage: "Test"
     #   rust: beta
-    - name: "Nightly tests"
-      stage: "Test"
-      rust: nightly
-    - name: "Coverage"
-      stage: "Test"
-      rust: nightly
-      script:
-        - cargo install cargo-kcov
-        - cargo kcov --print-install-kcov-sh | sh
-        - cargo kcov --coveralls --all
     - name: "Rust fmt"
       stage: "Style"
       rust: stable
@@ -56,6 +46,25 @@ jobs:
       script:
         - python -m pip install editorconfig-checker
         - editorconfig-checker -exclude LICENSE
+    - name: "ESLint"
+      stage: "Style"
+      language: node_js
+      node_js:
+        - 12
+      script:
+        - cd frontend
+        - npm install
+        - npm run lint
+    - name: "Nightly tests"
+      stage: "Test"
+      rust: nightly
+    - name: "Coverage"
+      stage: "Test"
+      rust: nightly
+      script:
+        - cargo install cargo-kcov
+        - cargo kcov --print-install-kcov-sh | sh
+        - cargo kcov --coveralls --all
     - name: "Docker"
       stage: "Deploy"
       # Change to stable once Rocket works

@@ -8,9 +8,10 @@
 	"sideEffects": false,
 	"scripts": {
 		"start": "npm run watch",
-		"watch": "parcel ./src/index.html",
-		"build": "parcel build ./src/index.html",
-		"swap-watch": "telepresence --swap-deployment aether-frontend --expose 1234:80 parcel ./src/index.html"
+		"watch": "parcel ./src/index.html --hmr-hostname localhost",
+		"build": "parcel build ./src/index.html --experimental-scope-hoisting",
+		"swap-watch": "telepresence --swap-deployment aether-frontend --expose 1234:80 --run npm run watch",
+		"lint": "eslint --max-warnings 0 --ext .js,.jsx,.ts,.tsx ./src && stylelint './src/**/*.scss'"
 	},
 	"repository": {
 		"type": "git",
@@ -19,12 +20,33 @@
 	"bugs": {
 		"url": "https://github.com/aetherapp/aether/issues"
 	},
-	"devDependencies": {
-		"@types/node": "^13.11.0",
-		"parcel-bundler": "^1.12.4",
-		"typescript": "^3.8.3"
+	"alias": {
+		"react": "preact/compat",
+		"react-dom": "preact/compat"
 	},
 	"dependencies": {
-		"preact": "^10.3.4"
+		"@fortawesome/free-solid-svg-icons": "^5.13.0",
+		"preact": "^10.3.4",
+		"react-redux": "^7.2.0",
+		"redux": "^4.0.5",
+		"redux-persist": "^6.0.0"
+	},
+	"devDependencies": {
+		"@rfgamaral/parcel-plugin-typings-for-css-modules": "^1.0.4",
+		"@types/node": "^13.11.0",
+		"@types/parcel-env": "0.0.0",
+		"@types/react-redux": "^7.1.7",
+		"@typescript-eslint/eslint-plugin": "^2.27.0",
+		"@typescript-eslint/parser": "^2.26.0",
+		"autoprefixer": "^9.7.6",
+		"eslint": "^6.8.0",
+		"eslint-config-preact": "^1.1.1",
+		"eslint-config-prettier": "^6.10.1",
+		"parcel-bundler": "^1.12.4",
+		"postcss-modules": "^1.5.0",
+		"redux-devtools-extension": "^2.13.8",
+		"stylelint": "^13.3.2",
+		"stylelint-config-sass-guidelines": "^7.0.0",
+		"typescript": "^3.8.3"
 	}
 }

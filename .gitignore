@@ -17,6 +17,7 @@ package-lock.json
 node_modules
 dist
 .cache
+*.d.ts
 
 # Ignore IDE specific files
 .vscode/*
