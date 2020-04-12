@@ -17,6 +17,7 @@ spec:
       containers:
         - name: {{ .Release.Name }}-user
           image: aethercloud/user:{{ .Values.release }}
+          imagePullPolicy: {{ .Values.imagePullPolicy }}
           ports:
             - containerPort: 80
           resources:
