@@ -17,6 +17,7 @@ spec:
       containers:
         - name: {{ .Release.Name }}-frontend
           image: aethercloud/frontend:{{ .Values.release }}
+          imagePullPolicy: {{ .Values.imagePullPolicy }}
           ports:
             - containerPort: 80
           resources:
