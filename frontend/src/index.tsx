@@ -1,13 +1,23 @@
 import { h, render } from "preact";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 import "./global.scss";
 import Main from "./Main";
+import Themify from "./components/themify/Themify";
 
 /**
  * Start the application.
  */
 const start = (): void => {
-	render(<Main />, document.body);
+	render(
+		<Provider store={store}>
+			<Themify>
+				<Main />
+			</Themify>
+		</Provider>,
+		document.body
+	);
 };
 
 /**
