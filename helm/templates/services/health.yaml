@@ -29,6 +29,7 @@ spec:
       containers:
         - name: {{ .Release.Name }}-health
           image: aethercloud/health:{{ .Values.release }}
+          imagePullPolicy: {{ .Values.imagePullPolicy }}
           ports:
             - containerPort: 80
           resources:
