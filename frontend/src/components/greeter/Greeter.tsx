@@ -1,28 +1,33 @@
-import { h, FunctionalComponent, ComponentChildren } from "preact";
+import { h, FunctionalComponent, RenderableProps } from "preact";
 import { connect, MapDispatchToPropsParam, MapStateToPropsParam } from "react-redux";
 import { State } from "~store";
-import { ThemeVariant, setThemeVariant, ThemeState } from "~store/theme";
+import { setTheme, ThemeState, Theme } from "~store/theme";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
-import "./style.scss";
 import Icon from "~components/icon/Icon";
+
+import * as style from "./style.scss";
 
 /**
  * Renders the component.
  * @param props Props to render with.
  */
-const Greeter: FunctionalComponent<Props> = (props) => (
-	<div>
-		<h1>Hello world</h1>
-		<p>{props.children}</p>
-		<span
-			class="theme-switcher"
-			onClick={() => props.setThemeVariant(props.theme.variant === "dark" ? "light" : "dark")}
-		>
-			<Icon icon={props.theme.variant === "dark" ? faSun : faMoon} />
-		</span>
-	</div>
-);
+const Greeter: FunctionalComponent<RenderableProps<Props>> = (props) => {
+	const changeTheme = (): void => {
+		const current = props.theme.active === Theme.AETHER_DARK;
+		props.setTheme(current ? Theme.AETHER_LIGHT : Theme.AETHER_DARK);
+	};
+
+	return (
+		<div class={style.wrapper}>
+			<h1 class={style.header}>{props.title}</h1>
+			<div class={style.content}>{props.children}</div>
+			<span class={style.themeSwitcher} onClick={changeTheme}>
+				<Icon icon={props.theme.active === Theme.AETHER_DARK ? faSun : faMoon} />
+			</span>
+		</div>
+	);
+};
 
 /**
  * Props definition
@@ -30,7 +35,7 @@ const Greeter: FunctionalComponent<Props> = (props) => (
 type Props = StateProps & DispatchProps & OwnProps;
 
 interface OwnProps {
-	children: ComponentChildren;
+	title: string;
 }
 
 interface StateProps {
@@ -38,13 +43,18 @@ interface StateProps {
 }
 
 interface DispatchProps {
-	setThemeVariant: (variant: ThemeVariant) => void;
+	setTheme: (theme: Theme) => void;
 }
 
+/**
+ * Props mapping from the store.
+ */
 const mapState: MapStateToPropsParam<StateProps, OwnProps> = (state: State) => ({
 	theme: state.theme,
 });
+
 const mapDispatch: MapDispatchToPropsParam<DispatchProps, OwnProps> = (dispatch) => ({
-	setThemeVariant: (variant: ThemeVariant) => dispatch(setThemeVariant(variant)),
+	setTheme: (theme: Theme) => dispatch(setTheme(theme)),
 });
+
 export default connect<StateProps, DispatchProps, OwnProps>(mapState, mapDispatch)(Greeter);

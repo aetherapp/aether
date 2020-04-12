@@ -4,8 +4,7 @@ import { Theme, ThemeActions, ThemeActionTypes, ThemeState } from "./";
  * The initial state.
  */
 const initialState: ThemeState = {
-	schema: Theme.DEFAULT,
-	variant: "dark",
+	active: Theme.DEFAULT,
 };
 
 /**
@@ -13,20 +12,12 @@ const initialState: ThemeState = {
  * @param state The current state.
  * @param action The action to run.
  */
-export const themeReducer = (
-	state: ThemeState = initialState,
-	action: ThemeActionTypes
-): ThemeState => {
+export const themeReducer = (state: ThemeState = initialState, action: ThemeActionTypes): ThemeState => {
 	switch (action.type) {
 		case ThemeActions.SET_THEME:
 			return {
 				...state,
-				schema: action.schema,
-			};
-		case ThemeActions.SET_THEME_VARIANT:
-			return {
-				...state,
-				variant: action.variant,
+				active: action.theme,
 			};
 		default:
 			return state;

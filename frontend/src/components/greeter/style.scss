@@ -1,34 +1,25 @@
-@import "~/themes.scss";
-
-div {
+.wrapper {
 	display: flex;
 	height: 100vh;
 	width: 100vw;
 	justify-content: flex-start;
 	align-items: center;
 	flex-direction: column;
-
-	@include themify() {
-		background-color: themed("backgroundColor");
-	}
+	background-color: var(--backgroundColor);
 }
 
-h1 {
+.header {
 	padding-top: 20vh;
 	font-size: 3em;
 	margin-bottom: 1vh;
-
-	@include themify() {
-		color: themed("headerColor");
-		font-family: themed("headerFont");
-	}
+	color: var(--headerColor);
+	font-family: var(--headerFont);
 }
 
-p {
-	@include themify() {
-		color: themed("textColor");
-		font-family: themed("textFont");
-	}
+.content {
+	padding: 0 4vw;
+	color: var(--textColor);
+	font-family: var(--textFont);
 }
 
 .theme-switcher {
@@ -38,9 +29,6 @@ p {
 
 	svg {
 		height: 2.5em;
-
-		@include themify() {
-			fill: themed("iconColor");
-		}
+		fill: var(--iconColor);
 	}
 }

@@ -11,7 +11,7 @@
 		"watch": "parcel ./src/index.html --hmr-hostname localhost",
 		"build": "parcel build ./src/index.html",
 		"swap-watch": "telepresence --swap-deployment aether-frontend --expose 1234:80 --run npm run watch",
-		"lint": "eslint --max-warnings 0 --ext .js,.jsx,.ts,.tsx ./src"
+		"lint": "eslint --max-warnings 0 --ext .js,.jsx,.ts,.tsx ./src && stylelint './src/**/*.scss'"
 	},
 	"repository": {
 		"type": "git",
@@ -31,15 +31,20 @@
 		"redux": "^4.0.5"
 	},
 	"devDependencies": {
+		"@rfgamaral/parcel-plugin-typings-for-css-modules": "^1.0.4",
 		"@types/node": "^13.11.0",
 		"@types/react-redux": "^7.1.7",
 		"@typescript-eslint/eslint-plugin": "^2.27.0",
 		"@typescript-eslint/parser": "^2.26.0",
+		"autoprefixer": "^9.7.6",
 		"eslint": "^6.8.0",
 		"eslint-config-preact": "^1.1.1",
 		"eslint-config-prettier": "^6.10.1",
 		"parcel-bundler": "^1.12.4",
+		"postcss-modules": "^1.5.0",
 		"redux-devtools-extension": "^2.13.8",
+		"stylelint": "^13.3.2",
+		"stylelint-config-sass-guidelines": "^7.0.0",
 		"typescript": "^3.8.3"
 	}
 }

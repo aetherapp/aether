@@ -5,3 +5,39 @@ body {
 	border: 0;
 	font-size: 100%;
 }
+
+@mixin phone {
+	@media (min-width: 320px) {
+		@content;
+	}
+}
+
+@mixin tablet-small {
+	@media (min-width: 481px) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media (min-width: 641px) {
+		@content;
+	}
+}
+
+@mixin laptop-small {
+	@media (min-width: 961px) {
+		@content;
+	}
+}
+
+@mixin laptop {
+	@media (min-width: 1025px) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media (min-width: 1281px) {
+		@content;
+	}
+}
