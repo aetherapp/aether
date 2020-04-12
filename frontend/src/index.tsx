@@ -1,6 +1,7 @@
 import { h, render } from "preact";
 import { Provider } from "react-redux";
-import { store } from "./store";
+import { PersistGate } from "redux-persist/integration/react";
+import { store, persistor } from "./store";
 
 import "./global.scss";
 import Main from "./Main";
@@ -12,9 +13,11 @@ import Themify from "./components/themify/Themify";
 const start = (): void => {
 	render(
 		<Provider store={store}>
-			<Themify>
-				<Main />
-			</Themify>
+			<PersistGate loading={null} persistor={persistor}>
+				<Themify>
+					<Main />
+				</Themify>
+			</PersistGate>
 		</Provider>,
 		document.body
 	);

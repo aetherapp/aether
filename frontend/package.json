@@ -28,7 +28,8 @@
 		"@fortawesome/free-solid-svg-icons": "^5.13.0",
 		"preact": "^10.3.4",
 		"react-redux": "^7.2.0",
-		"redux": "^4.0.5"
+		"redux": "^4.0.5",
+		"redux-persist": "^6.0.0"
 	},
 	"devDependencies": {
 		"@rfgamaral/parcel-plugin-typings-for-css-modules": "^1.0.4",
