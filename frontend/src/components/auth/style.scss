@@ -3,7 +3,6 @@
 .container {
 	display: flex;
 	flex-direction: column;
-	min-height: 22vh;
 	margin-top: 5vh;
 	padding: 10px 20px;
 	background-color: var(--backgroundColor);
@@ -21,8 +20,7 @@
 }
 
 .type-switch {
-	margin-top: auto;
-	margin-bottom: 2vh;
+	margin: 2vh 0;
 	text-align: center;
 	color: var(--textColor);
 }
