@@ -6,6 +6,13 @@ body {
 	font-size: 100%;
 }
 
+h1 {
+	font-size: 3em;
+	margin-bottom: 1vh;
+	color: var(--headerColor);
+	font-family: var(--headerFont);
+}
+
 @mixin phone {
 	@media (min-width: 320px) {
 		@content;

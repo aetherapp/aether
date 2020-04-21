@@ -1,13 +1,9 @@
-@import "../../../global";
-
 .content {
-	display: inline-block;
-
-	@include laptop {
-		width: 40vw;
-	}
-
 	a {
 		color: var(--textColor);
 	}
+}
+
+.header {
+	padding-top: 20vh;
 }

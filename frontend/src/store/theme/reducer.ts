@@ -1,4 +1,7 @@
+import { persistReducer } from "redux-persist";
 import { Theme, ThemeActions, ThemeActionTypes, ThemeState } from "./";
+
+import storage from "redux-persist/lib/storage";
 
 /**
  * The initial state.
@@ -12,7 +15,7 @@ const initialState: ThemeState = {
  * @param state The current state.
  * @param action The action to run.
  */
-export const themeReducer = (state: ThemeState = initialState, action: ThemeActionTypes): ThemeState => {
+const reducer = (state: ThemeState = initialState, action: ThemeActionTypes): ThemeState => {
 	switch (action.type) {
 		case ThemeActions.SET_THEME:
 			return {
@@ -23,3 +26,13 @@ export const themeReducer = (state: ThemeState = initialState, action: ThemeActi
 			return state;
 	}
 };
+
+export const themeReducer = persistReducer(
+	{
+		key: "theme",
+		whitelist: ["active"],
+		version: 0,
+		storage,
+	},
+	reducer
+);
