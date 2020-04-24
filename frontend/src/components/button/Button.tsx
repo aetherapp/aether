@@ -3,7 +3,7 @@ import { h, FunctionalComponent, RenderableProps } from "preact";
 import * as style from "./style.scss";
 
 const Button: FunctionalComponent<RenderableProps<Props>> = (props) => (
-	<button class={style.button} onClick={props.onClick}>
+	<button class={style.button} onClick={props.onClick} type={props.type} disabled={props.disabled}>
 		{props.children}
 	</button>
 );
@@ -11,10 +11,10 @@ const Button: FunctionalComponent<RenderableProps<Props>> = (props) => (
 /**
  * Prop definition.
  */
-type Props = OwnProps;
-
-interface OwnProps {
+interface Props {
 	onClick?: () => void;
+	type?: string;
+	disabled?: boolean;
 }
 
 export default Button;

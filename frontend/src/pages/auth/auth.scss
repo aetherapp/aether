@@ -1,0 +1,11 @@
+@import "../../global";
+
+.webauthn {
+	display: flex;
+	flex-direction: column;
+	padding-top: 3vh;
+
+	@include desktop {
+		margin: 0 25%;
+	}
+}

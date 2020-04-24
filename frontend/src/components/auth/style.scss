@@ -3,7 +3,7 @@
 .container {
 	display: flex;
 	flex-direction: column;
-	margin-top: 5vh;
+	margin-top: 7vh;
 	padding: 10px 20px;
 	background-color: var(--backgroundColor);
 	border-radius: 5px;
@@ -20,7 +20,8 @@
 }
 
 .type-switch {
-	margin: 2vh 0;
+	margin: 1vh auto;
+	padding: 1vh;
 	text-align: center;
 	color: var(--textColor);
 }
