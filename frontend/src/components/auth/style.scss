@@ -1,0 +1,27 @@
+@import "../../global";
+
+.container {
+	display: flex;
+	flex-direction: column;
+	margin-top: 7vh;
+	padding: 10px 20px;
+	background-color: var(--backgroundColor);
+	border-radius: 5px;
+
+	@include laptop {
+		margin-top: 20vh;
+	}
+}
+
+.header {
+	font-size: 2.4em;
+	text-align: center;
+	margin-bottom: 0;
+}
+
+.type-switch {
+	margin: 1vh auto;
+	padding: 1vh;
+	text-align: center;
+	color: var(--textColor);
+}

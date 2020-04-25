@@ -1,21 +1,14 @@
 import { createStore, combineReducers } from "redux";
 import { devToolsEnhancer } from "redux-devtools-extension/logOnlyInProduction";
-import { persistStore, persistReducer } from "redux-persist";
+import { persistStore } from "redux-persist";
+
 import { themeReducer } from "./theme";
+import { authReducer } from "./auth";
 
-import storage from "redux-persist/lib/storage";
-
-export const reducers = persistReducer(
-	{
-		key: "aether",
-		whitelist: ["theme"],
-		version: 0,
-		storage,
-	},
-	combineReducers({
-		theme: themeReducer,
-	})
-);
+const reducers = combineReducers({
+	theme: themeReducer,
+	auth: authReducer,
+});
 
 export type State = ReturnType<typeof reducers>;
 export const store = createStore(reducers, devToolsEnhancer({}));

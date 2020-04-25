@@ -20,7 +20,6 @@ const Greeter: FunctionalComponent<RenderableProps<Props>> = (props) => {
 
 	return (
 		<div class={style.wrapper}>
-			<h1 class={style.header}>{props.title}</h1>
 			<div class={style.content}>{props.children}</div>
 			<span class={style.themeSwitcher} onClick={changeTheme}>
 				<Icon icon={props.theme.active === Theme.AETHER_DARK ? faSun : faMoon} />
@@ -32,11 +31,7 @@ const Greeter: FunctionalComponent<RenderableProps<Props>> = (props) => {
 /**
  * Props definition
  */
-type Props = StateProps & DispatchProps & OwnProps;
-
-interface OwnProps {
-	title: string;
-}
+type Props = StateProps & DispatchProps;
 
 interface StateProps {
 	theme: ThemeState;
@@ -49,12 +44,12 @@ interface DispatchProps {
 /**
  * Props mapping from the store.
  */
-const mapState: MapStateToPropsParam<StateProps, OwnProps> = (state: State) => ({
+const mapState: MapStateToPropsParam<StateProps, {}> = (state: State) => ({
 	theme: state.theme,
 });
 
-const mapDispatch: MapDispatchToPropsParam<DispatchProps, OwnProps> = (dispatch) => ({
+const mapDispatch: MapDispatchToPropsParam<DispatchProps, {}> = (dispatch) => ({
 	setTheme: (theme: Theme) => dispatch(setTheme(theme)),
 });
 
-export default connect<StateProps, DispatchProps, OwnProps>(mapState, mapDispatch)(Greeter);
+export default connect<StateProps, DispatchProps>(mapState, mapDispatch)(Greeter);

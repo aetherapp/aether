@@ -12,5 +12,8 @@ export enum Theme {
  * State of the theme store.
  */
 export interface ThemeState {
+	/**
+	 * Current active theme.
+	 */
 	active: Theme;
 }

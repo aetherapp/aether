@@ -1,17 +1,23 @@
 .aether-light {
-	--backgroundColor: #f5f7fa;
-	--headerColor: #001738;
+	--backdropColor: linear-gradient(315deg, #c0c3d8 0%, #d5e6eb 74%);
+	--backgroundColor: #eef2f7;
+	--headerColor: #09203f;
 	--textColor: #182c49;
-	--iconColor: #596174;
-	--headerFont: ("Arial Black", Gadget, sans-serif);
-	--textFont: ("Arial Black", Gadget, sans-serif);
+	--iconColor: #001738;
+	--headerFont: Arial, Helvetica, sans-serif;
+	--textFont: Georgia, serif;
+	--primaryText: #444;
+	--primaryGradient: linear-gradient(315deg, #0596c7 0%, #2c69d1 74%);
 }
 
 .aether-dark {
-	--backgroundColor: #303a52;
+	--backdropColor: linear-gradient(315deg, #4c4177 0%, #0d324d 74%);
+	--backgroundColor: #2f4353;
 	--headerColor: #bdc3c7;
 	--textColor: #fff;
 	--iconColor: #8492a6;
-	--headerFont: ("Arial Black", Gadget, sans-serif);
-	--textFont: ("Arial Black", Gadget, sans-serif);
+	--headerFont: Arial, Helvetica, sans-serif;
+	--textFont: Georgia, serif;
+	--primaryText: #fff;
+	--primaryGradient: linear-gradient(315deg, #0596c7 0%, #2c69d1 74%);
 }
