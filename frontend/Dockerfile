@@ -12,6 +12,7 @@ RUN npm install
 # Copy over the source code
 COPY src /usr/src/app/src
 COPY tsconfig.json /usr/src/app
+COPY .postcssrc /usr/src/app
 
 # Build the application
 RUN npm run build
