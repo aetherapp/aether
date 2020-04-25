@@ -3,9 +3,10 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./store";
 
-import "./global.scss";
 import Main from "./Main";
 import Themify from "./components/themify/Themify";
+
+import "./global.scss";
 
 /**
  * Start the application.
