@@ -57,7 +57,7 @@ interface DispatchProps {
  * Store to Props mapping.
  */
 const mapDispatch = (dispatch: Dispatch): DispatchProps => ({
-	registerWebAuthn: (username) => dispatch(registerWebAuthn(username)),
+	registerWebAuthn: async (username) => dispatch(registerWebAuthn(username)),
 });
 
 export default connect<{}, DispatchProps>(null, mapDispatch)(Register);

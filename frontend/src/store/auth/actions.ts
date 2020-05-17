@@ -27,7 +27,8 @@ export const registerWebAuthn: RegisterWebAuthn = (
 	const req = await fetch("/api/auth/register", {
 		method: "post",
 		body: JSON.stringify({
-			auth_type: "WebAuthn",
+			authType: "WebAuthn",
+			username,
 		}),
 	});
 
