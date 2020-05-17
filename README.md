@@ -92,12 +92,3 @@ A docker compose file is planned for easy deployment without k8s. Support for th
 #### Other
 
 As this application is build with microservices there are a lot of moving parts. Therefore other types of deployment are not supported and even discouraged.
-
-## Structure
-
-This repository is a monorepo for the backend, and such contains all code for it.
-
-| Folder | Purpose                                                            |
-| ------ | ------------------------------------------------------------------ |
-| Health | Health endpoint, also serves as a base for new services.           |
-| Shared | Defines shared structures bewteen services, not an actual service. |
