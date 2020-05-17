@@ -1,5 +1,5 @@
 import { persistReducer } from "redux-persist";
-import { AuthState, AuthActions, AuthActionTypes } from "./";
+import { AuthState, AuthActions, AuthSyncActionTypes } from "./";
 
 import storage from "redux-persist/lib/storage";
 
@@ -17,7 +17,7 @@ const initialState: AuthState = {
  * @param state The current state.
  * @param action The action to run.
  */
-export const reducer = (state: AuthState = initialState, action: AuthActionTypes): AuthState => {
+export const reducer = (state: AuthState = initialState, action: AuthSyncActionTypes): AuthState => {
 	switch (action.type) {
 		case AuthActions.LOGOUT: {
 			return {

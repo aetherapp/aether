@@ -1,5 +1,8 @@
-import { h, FunctionalComponent } from "preact";
+import { h, FunctionalComponent, RenderableProps } from "preact";
 import { useState } from "preact/hooks";
+import { connect } from "react-redux";
+import { Dispatch } from "~store";
+import { registerWebAuthn } from "~store/auth";
 
 import * as style from "../auth.scss";
 
@@ -8,7 +11,7 @@ import Auth from "~components/auth/Auth";
 import Button from "~components/button/Button";
 import Input from "~components/input/Input";
 
-const Register: FunctionalComponent = () => {
+const Register: FunctionalComponent<RenderableProps<Props>> = (props) => {
 	const [loading, setLoading] = useState(false);
 	const [username, setUsername] = useState("");
 
@@ -16,7 +19,11 @@ const Register: FunctionalComponent = () => {
 		e.preventDefault();
 		setLoading(true);
 
-		setTimeout(() => setLoading(false), 5000);
+		props
+			.registerWebAuthn(username)
+			.then(() => console.log("hello world"))
+			.catch((err: Error) => console.error(err))
+			.finally(() => setLoading(false));
 	};
 
 	const changeUsername = (newUser: string): void => {
@@ -37,4 +44,20 @@ const Register: FunctionalComponent = () => {
 	);
 };
 
-export default Register;
+/**
+ * Props definition.
+ */
+type Props = DispatchProps;
+
+interface DispatchProps {
+	registerWebAuthn: (username: string) => Promise<void>;
+}
+
+/**
+ * Store to Props mapping.
+ */
+const mapDispatch = (dispatch: Dispatch): DispatchProps => ({
+	registerWebAuthn: async (username) => dispatch(registerWebAuthn(username)),
+});
+
+export default connect<{}, DispatchProps>(null, mapDispatch)(Register);

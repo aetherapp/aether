@@ -1,3 +1,5 @@
+import { AppThunk } from "~store";
+
 /**
  * An enum consisting of all action types handled by this reducer.
  */
@@ -16,4 +18,25 @@ export interface Logout {
 	type: AuthActions.LOGOUT;
 }
 
-export type AuthActionTypes = Logout;
+/**
+ * Register with WebAuthn.
+ */
+export const registerWebAuthn: RegisterWebAuthn = (
+	username: string
+): AppThunk<Promise<void>> => async (): Promise<void> => {
+	const req = await fetch("/api/auth/register", {
+		method: "post",
+		body: JSON.stringify({
+			authType: "WebAuthn",
+			username,
+		}),
+	});
+
+	console.log(req);
+	console.log(await req.json());
+};
+
+export type RegisterWebAuthn = (username: string) => AppThunk<Promise<void>>;
+
+export type AuthSyncActionTypes = Logout;
+export type AuthActionTypes = AuthSyncActionTypes | RegisterWebAuthn;
