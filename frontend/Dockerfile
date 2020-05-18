@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 
 # Copy the package file and install dependencies
 COPY package.json /usr/src/app
-RUN npm install
+RUN yarn install
 
 # Copy over the source code
 COPY src /usr/src/app/src
@@ -15,7 +15,7 @@ COPY tsconfig.json /usr/src/app
 COPY .postcssrc /usr/src/app
 
 # Build the application
-RUN npm run build
+RUN yarn build
 
 # The actual server, this builds the final image
 FROM nginx:latest

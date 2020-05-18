@@ -11,6 +11,7 @@ Cargo.lock
 
 # Ignore frontend output
 package-lock.json
+yarn.lock
 node_modules
 dist
 .cache

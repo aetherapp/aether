@@ -7,7 +7,11 @@ if [[ -z "${CI}" ]]; then
 	exit 1
 fi
 
-# echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+cd frontend
+yarn install
+cd ..
+
+echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 # Build images
 docker build -t $DOCKER_ORG/aether .

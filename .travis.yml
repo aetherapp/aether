@@ -52,8 +52,8 @@ jobs:
         - 12
       script:
         - cd frontend
-        - npm install
-        - npm run lint
+        - yarn install
+        - yarn lint
     - name: "Nightly tests"
       stage: "Test"
       rust: nightly
@@ -61,6 +61,7 @@ jobs:
       stage: "Test"
       rust: nightly
       script:
+        - cd frontend && yarn install && cd ..
         - cargo install cargo-kcov
         - cargo kcov --print-install-kcov-sh | sh
         - cargo kcov --coveralls --all
