@@ -57,6 +57,9 @@ jobs:
     - name: "Nightly tests"
       stage: "Test"
       rust: nightly
+      script:
+        - cd frontend && yarn install && cd ..
+        - cargo build
     - name: "Coverage"
       stage: "Test"
       rust: nightly
