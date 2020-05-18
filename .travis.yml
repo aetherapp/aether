@@ -57,17 +57,19 @@ jobs:
     - name: "Nightly tests"
       stage: "Test"
       rust: nightly
-      node_js:
-        - node
       script:
+        - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+        - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+        - sudo apt update && sudo apt install yarn
         - cd frontend && yarn install && cd ..
         - cargo build
     - name: "Coverage"
       stage: "Test"
       rust: nightly
-      node_js:
-        - node
       script:
+        - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+        - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+        - sudo apt update && sudo apt install yarn
         - cd frontend && yarn install && cd ..
         - cargo install cargo-kcov
         - cargo kcov --print-install-kcov-sh | sh
@@ -76,6 +78,4 @@ jobs:
       stage: "Deploy"
       # Change to stable once Rocket works
       rust: nightly
-      node_js:
-        - node
       script: ./docker-publish.sh
