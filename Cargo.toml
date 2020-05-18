@@ -12,3 +12,4 @@ rocket = { version = "0.4.4", default-features = false }
 rocket_contrib = "0.4.4"
 serde = "1.0.110"
 serde_derive = "1.0.110"
+include_dir = "0.6.0"
