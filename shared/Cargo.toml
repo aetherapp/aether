@@ -1,8 +1,0 @@
-[package]
-name = "shared"
-version = "0.1.0"
-authors = ["Dany Sluijk <dany@atlasdev.nl>"]
-edition = "2018"
-
-[dependencies]
-chrono = "0.4"

@@ -52,8 +52,8 @@ jobs:
         - 12
       script:
         - cd frontend
-        - npm install
-        - npm run lint
+        - yarn install
+        - yarn lint
     - name: "Nightly tests"
       stage: "Test"
       rust: nightly

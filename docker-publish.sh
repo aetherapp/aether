@@ -9,27 +9,32 @@ fi
 
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
-# Build base image
-docker build -t aether-base .
+# Build images
+docker build -t $DOCKER_ORG/aether .
+retVal=$?
+if [ $retVal -ne 0 ]; then
+	echo "Failed to build aether."
+	exit $retVal
+fi
 
-# Build docker containers
-for i in $(ls -d */); do
-	CONTAINER=${i%%/}
-	if [ ! -f "$CONTAINER/Dockerfile" ]; then
-		continue
-	fi
+docker build -t $DOCKER_ORG/frontend ./frontend
+retVal=$?
+if [ $retVal -ne 0 ]; then
+	echo "Failed to build aether frontend."
+	exit $retVal
+fi
 
-	echo "Building $DOCKER_ORG/$CONTAINER.."
-	docker build -t $DOCKER_ORG/$CONTAINER $CONTAINER
-done
+# Push them to the docker hub
+docker push $DOCKER_ORG/aether
+retVal=$?
+if [ $retVal -ne 0 ]; then
+	echo "Failed to push aether."
+	exit $retVal
+fi
 
-# Push to registery
-for i in $(ls -d */); do
-	CONTAINER=${i%%/}
-	if [ ! -f "$CONTAINER/Dockerfile" ]; then
-		continue
-	fi
-
-	echo "Pushing $DOCKER_ORG/$CONTAINER.."
-	docker push $DOCKER_ORG/$CONTAINER
-done
+docker push $DOCKER_ORG/frontend
+retVal=$?
+if [ $retVal -ne 0 ]; then
+	echo "Failed to push aether frontend."
+	exit $retVal
+fi

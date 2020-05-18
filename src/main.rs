@@ -2,5 +2,5 @@
  * Start the server.
  */
 fn main() {
-	user::create_server().launch();
+	aether::create_server().launch();
 }

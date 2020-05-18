@@ -4,42 +4,6 @@ First of all, thank you for considering to contribute to Aether.
 We gladly accept your help.
 This document shows how to get started, and how to submit a patch.
 
-## Getting started
-
-To get started, follow the Minikube guide in the Readme.
-This will set up a development environment for you.
-
-### Telepresence
-
-In order to work on a feature, we use [Telepresence](https://www.telepresence.io).
-This swaps out the service you want to work with, giving you full access to the cluster.
-It will give you access to the database, dns, and other services.
-Your program could also be called by other services, or by users through the ingress.
-Please install this now, you'll need it.
-
-### Developing a service
-
-Using Telepresence is really easy.
-Just run the following command:
-
-```
-telepresence --swap-deployment aether-{service} --expose 8000:80
-```
-
-Replace `{service}` with the service you want to develop on.
-Of course, if you need to expose different ports you can modify that as you want.
-Please take a look a the Telepresence documentation for advanced usage.
-
-You can use this on the `health` service for example.
-Any traffic for the health service will then instead be proxied to the shell on port `8000`.
-In order to handle this traffic you need to launch a http server.
-Go to the `health` service, and modify the code as you see fit.
-When you're done, start the service with `cargo run`.
-Now, when you try to access the `health` service through the cluster, you end up on your local instance!
-
-To exit, just exit the shell as normal.
-Telepresence will automatically swap the real service back.
-
 ## Submitting a patch
 
 So you have thought of a great patch, and you are ready to start?

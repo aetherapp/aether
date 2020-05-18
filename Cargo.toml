@@ -1,6 +1,14 @@
-[workspace]
-members = ["shared", "health", "user"]
-default-members = ["health", "user"]
+[package]
+name = "aether"
+version = "0.1.0"
+authors = ["Dany Sluijk <dany@atlasdev.nl>"]
+edition = "2018"
 
 [profile.release]
 lto = true
+
+[dependencies]
+rocket = { version = "0.4.4", default-features = false }
+rocket_contrib = "0.4.4"
+serde = "1.0.110"
+serde_derive = "1.0.110"
