@@ -10,7 +10,7 @@
 	],
 	"scripts": {
 		"start": "yarn watch",
-		"watch": "parcel ./src/index.html --hmr-hostname localhost",
+		"watch": "parcel ./src/index.html",
 		"build": "parcel build ./src/index.html --experimental-scope-hoisting",
 		"lint": "eslint --max-warnings 0 --ext .js,.jsx,.ts,.tsx ./src && stylelint './src/**/*.scss'"
 	},
@@ -47,10 +47,10 @@
 		"eslint-config-prettier": "^6.10.1",
 		"parcel": "^2.0.0-alpha.3.2",
 		"parcel-bundler": "^1.12.4",
-		"postcss-modules": "^2.0.0",
+		"postcss-modules": "^1.5.0",
 		"preact-router": "^3.2.1",
 		"redux-devtools-extension": "^2.13.8",
-		"sass": "^1.26.3",
+		"sass": "^1.26.5",
 		"stylelint": "^13.3.2",
 		"stylelint-config-sass-guidelines": "^7.0.0",
 		"typescript": "^3.8.3"
