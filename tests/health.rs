@@ -1,4 +1,4 @@
-extern crate health;
+extern crate aether;
 
 use rocket::{
 	http::{ContentType, Status},
@@ -10,7 +10,7 @@ use rocket::{
  */
 #[test]
 fn get_health() {
-	let rocket = health::create_server();
+	let rocket = aether::create_server();
 	let client = Client::new(rocket).expect("valid rocket instance");
 
 	let req = client.get("/api/health");
