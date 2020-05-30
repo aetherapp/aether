@@ -10,7 +10,10 @@ It defines the webapp, which calls the backend services.
 There are a few yarn scripts created for you.
 
 - `yarn build`: This builds the project into `./build`.
+- `yarn serve`: Build and serve the production build.
 - `yarn watch`: This starts a Parcel development web server on `http://localhost:1234`.
+- `yarn swap-watch`: Use Telepresence to swap the frontend from the cluster, and start a dev server.
+- `yarn swap-serve`: Use Telepresence to swap the frontend from the cluster, and start a production server.
 - `yarn lint`: Lint the application against the preset rules.
 
 ## Debugging

@@ -10,8 +10,11 @@
 	],
 	"scripts": {
 		"start": "yarn watch",
-		"watch": "parcel ./src/index.html",
+		"watch": "parcel ./src/index.html --no-hmr",
 		"build": "parcel build ./src/index.html --experimental-scope-hoisting",
+		"serve": "yarn build && http-server ./dist -p 1234",
+		"swap-watch": "telepresence --swap-deployment aether-frontend --expose 1234:80 --run yarn watch",
+		"swap-serve": "telepresence --swap-deployment aether-frontend --expose 1234:80 --run yarn serve",
 		"lint": "eslint --max-warnings 0 --ext .js,.jsx,.ts,.tsx ./src && stylelint './src/**/*.scss'"
 	},
 	"repository": {
@@ -45,6 +48,7 @@
 		"eslint": "^7.0.0",
 		"eslint-config-preact": "^1.1.1",
 		"eslint-config-prettier": "^6.10.1",
+		"http-server": "^0.12.3",
 		"parcel": "^2.0.0-alpha.3.2",
 		"parcel-bundler": "^1.12.4",
 		"postcss-modules": "^1.5.0",

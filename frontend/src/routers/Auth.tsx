@@ -1,8 +1,8 @@
 import { h, FunctionalComponent } from "preact";
 
 import Router from "preact-router";
-import Login from "../pages/auth/login/Login";
-import Register from "../pages/auth/register/Register";
+import Login from "~pages/auth/login/Login";
+import Register from "~pages/auth/register/Register";
 
 const Auth: FunctionalComponent = () => (
 	<Router>

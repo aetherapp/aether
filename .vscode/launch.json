@@ -10,20 +10,11 @@
 			"webRoot": "${workspaceFolder}/frontend"
 		},
 		{
-			"name": "Debug User",
+			"name": "Debug Backend",
 			"type": "lldb",
 			"request": "launch",
-			"preLaunchTask": "compile: user",
-			"program": "${workspaceRoot}/target/debug/user",
-			"args": [],
-			"cwd": "${workspaceRoot}"
-		},
-		{
-			"name": "Debug Health",
-			"type": "lldb",
-			"request": "launch",
-			"preLaunchTask": "compile: health",
-			"program": "${workspaceRoot}/target/debug/health",
+			"preLaunchTask": "compile: backend",
+			"program": "${workspaceRoot}/target/debug/aether",
 			"args": [],
 			"cwd": "${workspaceRoot}"
 		}

@@ -4,6 +4,41 @@ First of all, thank you for considering to contribute to Aether.
 We gladly accept your help.
 This document shows how to get started, and how to submit a patch.
 
+## Getting started
+
+To get started, follow the Minikube guide in the Readme.
+This will set up a development environment for you.
+
+### Telepresence
+
+In order to work on a feature, we use [Telepresence](https://www.telepresence.io).
+This swaps out the service you want to work with, giving you full access to the cluster.
+It will give you access to the database, dns, and other services.
+Your program could also be called by other services, or by users through the ingress.
+Please install this now, you'll need it.
+
+### Developing the frontend
+
+Developing the frontend is fairly easy, just make sure the kube cluster is running, and helm has been deployed.
+Now you can `cd` in the frontend directory, and run `yarn swap-watch`.
+A development server will spin up, and you can start hacking away on the frontend.
+Just do `^C` to stop, cleanup will be done automatically.
+
+### Developing the backend
+
+The backend has an additional step, but it's not much more work.
+First, run this command:
+
+```
+telepresence --swap-deployment aether-backend --expose 8000:80
+```
+
+This swaps out the production dev environment, and starts listening on port 8000 locally for a replacement.
+Now start the backend like normal with `cargo run`.
+
+To exit, just exit the shell as normal.
+Telepresence will automatically swap the real service back.
+
 ## Submitting a patch
 
 So you have thought of a great patch, and you are ready to start?

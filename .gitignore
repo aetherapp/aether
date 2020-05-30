@@ -21,6 +21,9 @@ dist
 .vscode/*
 .idea/*
 
+# Ignore Telepresence output
+telepresence.log
+
 # Allow debugging definitions
 !.vscode/launch.json
 !.vscode/tasks.json
