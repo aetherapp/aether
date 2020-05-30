@@ -3,4 +3,4 @@ address = "0.0.0.0"
 
 [production]
 port = 80
-log = "normal"
+log = "critical"
