@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { State } from "~store";
 import { ThemeState, Theme } from "~store/theme";
 
-import * as themes from "../../themes.scss";
+import * as themes from "~themes.scss";
 
 /**
  * Render the component.

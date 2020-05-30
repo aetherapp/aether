@@ -1,0 +1,6 @@
+release: latest
+imagePullPolicy: Always
+
+ingress:
+  enabled: true
+  annotations: {}

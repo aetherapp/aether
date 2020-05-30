@@ -14,7 +14,7 @@ import "./global.scss";
 const start = (): void => {
 	render(
 		<Provider store={store}>
-			<PersistGate loading={null} persistor={persistor}>
+			<PersistGate persistor={persistor}>
 				<Themify>
 					<Main />
 				</Themify>
@@ -23,13 +23,6 @@ const start = (): void => {
 		document.body
 	);
 };
-
-/**
- * Enable hot reloading.
- */
-if (module.hot) {
-	module.hot.accept("/Main", () => requestAnimationFrame(start));
-}
 
 /**
  * Include the debug code if it's a development build.

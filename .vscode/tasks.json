@@ -2,14 +2,9 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "compile: user",
+			"label": "compile: backend",
 			"type": "shell",
-			"command": "cargo build -p user"
-		},
-		{
-			"label": "compile: health",
-			"type": "shell",
-			"command": "cargo build -p health"
+			"command": "cargo build"
 		}
 	]
 }
