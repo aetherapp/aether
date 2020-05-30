@@ -1,10 +1,9 @@
 ---
 name: Feature request
 about: Suggest an idea for Aether
-title: ''
+title: ""
 labels: enhancement, needs_triage
-assignees: ''
-
+assignees: ""
 ---
 
 ## Feature Description

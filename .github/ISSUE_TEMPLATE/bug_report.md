@@ -1,10 +1,9 @@
 ---
 name: Bug report
 about: Describe an issue with Aether
-title: ''
+title: ""
 labels: bug, needs_triage
-assignees: ''
-
+assignees: ""
 ---
 
 ## Issue Description
@@ -17,12 +16,12 @@ What do you expect to happen?
 
 ## Steps To Reproduce
 
-1. 
-2. 
-3. 
+1.
 
 ## Screenshots
+
 If applicable, add screenshots to help explain your problem.
 
 ## Additional information
+
 Add any other context about the problem here.
